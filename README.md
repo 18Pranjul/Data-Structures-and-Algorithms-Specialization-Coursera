@@ -7,3 +7,7 @@ This repository contains all my solutions of programming assignments of the 4 co
 Kindly refer to this repository if you get stuck in any of the assignments.
 
 # Course 1: [Algorithmic Toolbox](https://www.coursera.org/learn/algorithmic-toolbox?specialization=data-structures-algorithms)
+
+- Programming Assignment 1
+
+  - A
