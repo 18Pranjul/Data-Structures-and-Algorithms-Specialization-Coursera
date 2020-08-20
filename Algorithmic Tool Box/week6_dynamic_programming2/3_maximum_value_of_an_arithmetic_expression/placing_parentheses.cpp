@@ -1,80 +1,64 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <limits.h>
+#include <algorithm>
 using namespace std;
-long long calculate(long long sha, long long roop, char xyz) 
+typedef long long int ll;
+#define MOD 1000000007
+ll m[30][30],M[30][30];
+ll eval(ll a,ll b,ll op)
 {
-    if (xyz == '*')
-    return sha * roop;
-    else 
-    if (xyz == '+')
-    return sha + roop;
-    else 
-    if (xyz == '-')
-    return sha - roop;
-    else
-    assert(0);
+    if(op=='*')
+     return a*b;
+    if(op=='-')
+     return a-b;
+    return a+b;
 }
-int main()
+void update(ll i,ll j,ll n[],char op[])
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    char a[50];
-    cin>>a;
-    long long l,n,i,s,j,k,minvalue,maxvalue,p,b,c,d;
-    l=strlen(a);
-    n=(l+1)/2;
-    //cout<<n<<endl;
-    for(i=l;i>=1;i--)
+    ll k,mn=INT_MAX,mx=INT_MIN,a,b,c,d;
+    if(i==j)
     {
-        a[i]=a[i-1];
+        m[i][j]=n[i];
+        M[i][j]=n[i];
     }
-    a[0]='0';
-    long long mina[n+1][n+1];
-    long long maxa[n+1][n+1];
-    memset(mina,0,sizeof(mina));
-    memset(maxa,0,sizeof(maxa));
-    for(i=1;i<=n;i++)
+    else
     {
-        mina[i][i]=a[2*i-1]-'0';
-        maxa[i][i]=a[2*i-1]-'0';
-    }
-    for(s=1;s<=n-1;s++)
-    {
-        for(i=1;i<=n-s;i++)
+        for(int k=i;k<j;k++)
         {
-            j=i+s;
-            minvalue=LLONG_MAX;
-            maxvalue=LLONG_MIN;
-            for(k=i;k<=j-1;k++)
-            {
-                p=calculate(maxa[i][k],maxa[k+1][j],a[2*k]);
-                b=calculate(maxa[i][k],mina[k+1][j],a[2*k]);
-                c=calculate(mina[i][k],maxa[k+1][j],a[2*k]);
-                d=calculate(mina[i][k],mina[k+1][j],a[2*k]);
-                minvalue=min(minvalue,min(p,min(b,min(c,d))));
-                maxvalue=max(maxvalue,max(p,max(b,max(c,d))));
-            }
-            mina[i][j]=minvalue;
-            maxa[i][j]=maxvalue;
+            a=eval(M[i][k],M[k+1][j],op[k]);
+            b=eval(m[i][k],m[k+1][j],op[k]);
+            c=eval(M[i][k],m[k+1][j],op[k]);
+            d=eval(m[i][k],M[k+1][j],op[k]);
+            mn=min(mn,min(a,min(b,min(c,d))));
+            mx=max(mx,max(a,max(b,max(c,d))));
         }
+        M[i][j]=mx;
+        m[i][j]=mn;
     }
-    /*for(i=1;i<=n;i++)
-    {
-        for(j=1;j<=n;j++)
-        {
-            cout<<mina[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;
-    for(i=1;i<=n;i++)
-    {
-        for(j=1;j<=n;j++)
-        {
-            cout<<maxa[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;*/
-    cout<<maxa[1][n]<<endl;
+}
+int main() 
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	string s;
+	ll i,j,n[30],nl=0,opl=0;
+	char op[30];
+	cin>>s;
+	for(i=0;i<s.length();i++)
+	{
+	    if(i%2==0)
+	     n[nl++]=s[i]-48;
+	    else
+	     op[opl++]=s[i];
+	}
+	for(i=0;i<nl;i++)
+	{
+	    for(j=0;j<nl;j++)
+	    {
+	        update(j,j+i,n,op);
+	    }
+	}
+	cout<<M[0][nl-1];
+	return 0;
 }
