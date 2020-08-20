@@ -1,69 +1,39 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
+#define MOD 1000000007
 typedef long long int ll;
-bool compare(ll p, ll q)
+int min(int a,int b,int c)
 {
-    return (p<q);
+	if(a<=b && a<=c)
+	 return a;
+	if(b<=c && b<=a)
+	 return b;
+	return c;
 }
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    char a[2000];
-    char b[2000];
-    ll l1,l2,i,j,inserion,deletion,match,mismatch;
-    cin>>a>>b;
-    l1=strlen(a);
-    l2=strlen(b);
-    for(i=l1;i>=1;i--)
-    {
-        a[i]=a[i-1];
-    }
-    a[0]='0';
-    //cout<<a<<endl;
-    for(i=l2;i>=1;i--)
-    {
-        b[i]=b[i-1];
-    }
-    b[0]='0';
-    //cout<<b<<endl;
-    ll dp[l1+1][l2+1];
-    for(i=0;i<=l1;i++)
-    dp[i][0]=i;
-    for(i=0;i<=l2;i++)
-    dp[0][i]=i;
-    /*for(i=0;i<=l1;i++)
-    {
-        for(j=0;j<=l2;j++)
-        {
-            cout<<dp[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;*/
-    for(j=1;j<=l2;j++)
-    {
-        for(i=1;i<=l1;i++)
-        {
-            inserion=dp[i][j-1]+1;
-            deletion=dp[i-1][j]+1;
-            match=dp[i-1][j-1];
-            mismatch=dp[i-1][j-1]+1;
-            if(a[i]==b[j])
-            dp[i][j]=min({inserion,deletion,match},compare);
-            else
-            dp[i][j]=min({inserion,deletion,mismatch},compare);
-        }
-    }
-    /*for(i=0;i<=l1;i++)
-    {
-        for(j=0;j<=l2;j++)
-        {
-            cout<<dp[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;*/
-    cout<<dp[l1][l2]<<endl;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	string s1,s2;
+	int m,n,dp[101][101],i,j;
+	cin>>s1>>s2;
+	m=s1.length();
+	n=s2.length();
+	for(i=0;i<=m;i++)
+	 dp[i][0]=i;
+	for(i=0;i<=n;i++)
+	 dp[0][i]=i;
+	for(i=1;i<=m;i++)
+	{
+	    for(j=1;j<=n;j++)
+	    {
+	        if(s1[i-1]==s2[j-1])
+	         dp[i][j]=dp[i-1][j-1];
+	        else
+	         dp[i][j]=min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1])+1;
+	    }
+	}
+	cout<<dp[m][n];
+	return 0;
 }
