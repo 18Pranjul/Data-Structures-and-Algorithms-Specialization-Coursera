@@ -1,56 +1,36 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
+#define MOD 1000000007
 typedef long long int ll;
-struct roop
+struct tslot
 {
-    ll starting;
-    ll ending;
+	ll a;
+	ll b;
 };
-bool comp(roop p,roop q)
+bool cmp(tslot t1,tslot t2)
 {
-    if(p.ending==q.ending)
-    return p.starting<q.starting;
-    else
-    return p.ending<q.ending;
+	return t1.b<t2.b;
 }
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,i,k,p,b[1000000];
-    cin>>n;
-    struct roop r[n];
-    for(i=0;i<n;i++)
-    {
-        cin>>r[i].starting>>r[i].ending;
-    }
-    sort(r,r+n,comp);
-    /*for(i=0;i<n;i++)
-    {
-        cout<<r[i].starting<<" "<<r[i].ending;
-        cout<<endl;
-    }
-    cout<<endl;*/
-    p=r[0].ending;
-    k=0;
-    b[k++]=p;
-    for(i=1;i<n;i++)
-    {
-        if(p>=r[i].starting && p<=r[i].ending)
-        continue;
-        else
-        if(p<r[i].starting || p>r[i].ending)
-        {
-            p=r[i].ending;
-            b[k++]=p;
-        }
-    }
-    cout<<k<<endl;
-    for(i=0;i<k;i++)
-    {
-        cout<<b[i]<<" ";
-    }
-    cout<<endl;
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll n,i,s=0,p[101];
+	tslot t[101];
+	cin>>n;
+	for(i=0;i<n;i++) 
+	 cin>>t[i].a>>t[i].b;
+	sort(t,t+n,cmp);
+	i=0;
+	while(i<n)
+	{
+		p[s]=t[i].b;
+		while(i<n && p[s]>=t[i].a && p[s]<=t[i].b)
+		 i++;
+		s++;
+	}
+	cout<<s<<"\n";
+	for(i=0;i<s;i++) cout<<p[i]<<" ";
+	return 0;
 }
