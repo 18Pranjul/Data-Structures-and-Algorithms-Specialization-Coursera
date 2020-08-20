@@ -1,57 +1,43 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <stack>
 using namespace std;
+#define MOD 1000000007
 typedef long long int ll;
-#define MAX 1000000000000000000
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,i,nc1,nc2,nc3,z,y;
-    cin>>n;
-    vector<vector<ll>> vec(n+1);
-    ll a[n+1];
-    a[0]=0;
-    vec[0].push_back(0);
-    a[1]=0;
-    vec[1].push_back(1);
-    for(i=2;i<=n;i++)
-    {
-        a[i]=MAX;
-        nc1=nc2=nc3=MAX;
-        if(i%3==0)
-        {
-            nc1=a[i/3]+1;
-        }
-        if(i%2==0)
-        {
-            nc2=a[i/2]+1;
-        }
-        nc3=a[i-1]+1;
-        if(nc1<=nc2 && nc1<=nc3)
-        {
-            z=nc1;
-            y=i/3;
-        }
-        else
-        if(nc2<=nc1 && nc2<=nc3)
-        {
-            z=nc2;
-            y=i/2;
-        }
-        else
-        {
-            z=nc3;
-            y=i-1;
-        }
-        copy(vec[y].begin(), vec[y].end(), back_inserter(vec[i]));
-        vec[i].push_back(i);
-        a[i]=z;
-    }
-    cout<<a[n]<<endl;
-    for(i=0;i<vec[n].size();i++)
-    {
-        cout<<vec[n][i]<<" ";
-    }
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int n,i,a[1000001];
+	cin>>n;
+	stack <int> st;
+	a[1]=0;
+	a[2]=1;
+	a[3]=1;
+	for(i=4;i<=1000000;i++)
+	{
+		a[i]=a[i-1]+1;
+		if(i%2==0)
+		 a[i]=min(a[i/2]+1,a[i]);
+		if(i%3==0)
+		 a[i]=min(a[i/3]+1,a[i]);
+	}
+	for(i=n;i>1;)
+	{
+		st.push(i);
+		if(a[i-1]+1==a[i])
+		 i-=1;
+		else if(i%2==0 && a[i/2]+1==a[i])
+		 i/=2;
+		else if(i%3==0 && a[i/3]+1==a[i])
+		 i/=3;
+	}
+	st.push(1);
+	cout<<a[n]<<"\n";
+	while(!st.empty())
+	{
+		cout<<st.top()<<" ";
+		st.pop();
+	}
+	return 0;
 }
