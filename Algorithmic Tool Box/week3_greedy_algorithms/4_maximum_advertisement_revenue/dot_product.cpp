@@ -1,25 +1,19 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
+#define MOD 1000000007
 typedef long long int ll;
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,i,f;
-    cin>>n;
-    ll a[n],b[n];
-    for(i=0;i<n;i++)
-    cin>>a[i];
-    for(i=0;i<n;i++)
-    cin>>b[i];
-    sort(a,a+n);
-    sort(b,b+n);
-    f=0;
-    for(i=0;i<n;i++)
-    {
-        f=f+(a[i]*b[i]);
-    }
-    cout<<f<<endl;
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll n,a[1005],b[1005],i,sum=0;
+	cin>>n;
+	for(i=0;i<n;i++) cin>>a[i];
+	for(i=0;i<n;i++) cin>>b[i];
+	sort(a,a+n);
+	sort(b,b+n);
+	for(i=0;i<n;i++) sum+=(a[i]*b[i]);
+	cout<<sum;
+	return 0;
 }
