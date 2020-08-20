@@ -1,58 +1,31 @@
-k#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 typedef long long int ll;
-int main()
+#define MOD 1000000007
+int main() 
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll W,n,i,n1,W1,val,j;
-    cin>>W>>n;
-    ll wt[n+1],value[n+1];
-    for(i=1;i<=n;i++)
-    {
-        cin>>wt[i];
-        value[i]=wt[i];
-    }
-    ll w; 
-    n1=n+1;
-    W1=W+1;
-    vector<ll> K(n1 * W1); 
-    for(i=0;i<W1;i++) 
-    K[0*W1+i]=0;
-    for(i=0;i<n;i++) 
-    K[i*W1+0]=0;
-    /*for(i=0;i<=n;i++)
-    {
-        for(j=0;j<=W;j++)
-        {
-            cout<<K[i*W1+j]<<" ";
-        } 
-        cout<<endl;
-    }
-    cout<<endl;*/
-    for(i=1;i<=n;i++) 
-    { 
-        for(w=1;w<=W;w++) 
-        {
-            K[i*W1+w] = K[(i-1)*W1+w];
-            if(wt[i]<=w)
-            {
-                val=K[(i-1)*W1+(w-wt[i])]+value[i];
-                if(K[i*W1+w]<val)
-                K[i*W1+w]=val;
-            }
-        } 
-    }
-    /*for(i=0;i<=n;i++)
-    {
-        for(j=0;j<=W;j++)
-        {
-            cout<<K[i*W1+j]<<" ";
-        } 
-        cout<<endl;
-    }
-    cout<<endl;*/
-    cout<<K[n*W1+W]<<endl;
-    return 0;
+	int W,n,i,j;
+	int w[305];
+	cin>>W>>n;
+	for(i=1;i<=n;i++) cin>>w[i];
+	vector <int> dp[301];
+	sort(w+1,w+n+1);
+	for(i=0;i<=n;i++)
+	{
+	    for(j=0;j<=W;j++)
+	    {
+	        if(i==0 || j==0)
+	        {
+	            dp[i].push_back(0);
+	            continue;
+	        }
+	        dp[i].push_back(dp[i-1][j]);
+	        if(w[i]<=j)
+	         dp[i][j]=max(w[i]+dp[i-1][j-w[i]],dp[i][j]);
+	    }
+	}
+	cout<<dp[n][W];
+	return 0;
 }
