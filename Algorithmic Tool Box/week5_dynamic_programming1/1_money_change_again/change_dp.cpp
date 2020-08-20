@@ -1,33 +1,27 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-#define MAX 1000000000000000000
+#define MOD 1000000007
 typedef long long int ll;
+int min(int a,int b,int c)
+{
+	if(a<=b && a<=c)
+	 return a;
+	if(b<=c && b<=a)
+	 return b;
+	return c;
+}
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,i,j,numcoins,a[3];
-    a[0]=1;
-    a[1]=3;
-    a[2]=4;
-    cin>>n;
-    ll minnumcoins[n+1];
-    minnumcoins[0]=0;
-    for(i=1;i<=n;i++)
-    {
-        minnumcoins[i]=MAX;
-        for(j=0;j<3;j++)
-        {
-            if(i>=a[j])
-            {
-                numcoins=minnumcoins[i-a[j]]+1;
-                if(numcoins<minnumcoins[i])
-                minnumcoins[i]=numcoins;
-            }
-        }
-        
-    }
-    cout<<minnumcoins[n]<<endl;
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int n,i,a[1000];
+	a[1]=1;
+	a[2]=2;
+	a[3]=1;
+	a[4]=1;
+	for(i=5;i<=1000;i++)
+	 a[i]=min(a[i-4],a[i-3],a[i-1])+1;
+	cin>>n;
+	cout<<a[n];
+	return 0;
 }
