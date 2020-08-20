@@ -1,67 +1,77 @@
-#include <bits/stdc++.h> 
+#include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 typedef long long int ll;
-bool Possible(ll a[],ll subsetSum[],bool used[],ll sumofeachsubset,ll n,ll currIndex,ll lastindex) 
-{ 
-    ll i,temp;
-    bool next;
-    if(subsetSum[currIndex]==sumofeachsubset) 
-    { 
-        if(currIndex==1) 
-            return true; 
-        return Possible(a,subsetSum,used,sumofeachsubset,n,currIndex+1,n-1); 
-    } 
-    for(i=lastindex;i>=0;i--) 
-    { 
-        if(used[i]) 
-            continue; 
-        temp=subsetSum[currIndex]+a[i]; 
-        if (temp<=sumofeachsubset) 
-        { 
-            used[i]=true; 
-            subsetSum[currIndex]+=a[i]; 
-            next=Possible(a,subsetSum,used,sumofeachsubset,n,currIndex,i-1); 
-            used[i]=false; 
-            subsetSum[currIndex]-=a[i]; 
-            if(next) 
-                return true; 
-        } 
-    } 
-    return false; 
-} 
-int main() 
-{ 
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,i,k,sum,sumofeachsubset;
-    cin>>n;
-    ll a[n],subsetSum[3];
-    bool used[n];
+#define MOD 1000000007
+void init(vector <int> dp[],int n)
+{
+    int i;
     for(i=0;i<n;i++)
-    cin>>a[i];
-    if (n<3) 
+     dp[i].clear();
+}
+void update(vector <int> dp[],int n,int W,vector <int> w)
+{
+    int i,j;
+    init(dp,n);
+    for(i=0;i<=n;i++)
+	{
+	    for(j=0;j<=W;j++)
+	    {
+	        if(i==0 || j==0)
+	        {
+	            dp[i].push_back(0);
+	            continue;
+	        }
+	        dp[i].push_back(dp[i-1][j]);
+	        if(w[i]<=j)
+	         dp[i][j]=max(w[i]+dp[i-1][j-w[i]],dp[i][j]);
+	    }
+	}
+}
+void neww(vector <int> dp[],int n,int W,vector <int> w)
+{
+    int i=n,j=W;
+    while(dp[i][j]>0)
     {
-        cout<<"0"<<endl;
-        return 0;
-    } 
-    sum=0; 
-    for (i=0;i<n;i++) 
-    sum+=a[i]; 
-    if (sum%3!=0) 
-    {
-        cout<<"0"<<endl;
-        return 0;
-    } 
-    sumofeachsubset=sum/3; 
-    for(i=0;i<3;i++) 
-    subsetSum[i]=0; 
-    for(i=0;i<n;i++) 
-    used[i]=false; 
-    subsetSum[0]=a[n-1]; 
-    used[n-1]=true;
-    if(Possible(a,subsetSum,used,sumofeachsubset,n,0,n-1)) 
-        cout<<"1"<<endl;
-    else
-        cout<<"0"<<endl; 
-} 
+        if(w[i]<=j && dp[i][j]!=dp[i-1][j])
+        {
+            w.erase(w.begin()+i);
+            i--;
+            j=j-w[i];
+        }
+        else
+         i--;
+    }
+}
+int main() 
+{
+	int n,i,j,sum=0,f;
+	cin>>n;
+    vector <int> dp[30],w;
+    w.push_back(0);
+	for(i=1;i<=n;i++)
+	{
+	    cin>>j;
+	    w.push_back(j);
+	    sum+=w[i];
+	}
+	if(n<3)
+	 cout<<0;
+	else if(sum%3!=0)
+	 cout<<0;
+	else
+	{
+	    f=1;
+	    sort(w.begin()+1,w.begin()+n+1);
+	    update(dp,n,sum/3,w);
+	    if(dp[n][sum/3]!=sum/3)
+	     f=0;
+	    neww(dp,n,sum/3,w);
+	    update(dp,n,sum/3,w);
+	    if(dp[n][sum/3]!=sum/3)
+	     f=0;
+	    cout<<f;
+	}
+	return 0;
+}
