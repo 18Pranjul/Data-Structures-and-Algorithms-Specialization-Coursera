@@ -1,39 +1,37 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
+#define MOD 1000000007
 typedef long long int ll;
-#define MAX 100000000000000000;
+int max(int a,int b)
+{
+	if(a>=b)
+	 return a;
+	return b;
+}
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n1,m1,i,j;
-    cin>>n1;
-    ll arr1[n1+1];
-    arr1[0]=0;
-    for(i=1;i<=n1;i++)
-    cin>>arr1[i];
-    cin>>m1;
-    ll arr2[m1+1];
-    arr2[0]=0;
-    for(i=1;i<=m1;i++)
-    cin>>arr2[i];
-    ll dp[n1+1][m1+1];
-    for(i=0;i<=n1;i++)
-    dp[i][0]=0;
-    
-    for(i=0;i<=m1;i++)
-    dp[0][i]=0;
-    for(i=1;i<=n1;i++)
-    {
-        for(j=1;j<=m1;j++)
-        {
-            if(arr1[i]==arr2[j])
-            dp[i][j]=1+dp[i-1][j-1];
-            else
-            dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
-        }
-    }
-    cout<<dp[n1][m1]<<endl;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll m,n,a[101],b[101],dp[101][101],i,j;
+	cin>>m;
+	for(i=0;i<m;i++) cin>>a[i];
+	cin>>n;
+	for(i=0;i<n;i++) cin>>b[i];
+	for(i=0;i<=m;i++)
+	 dp[i][0]=0;
+	for(i=0;i<=n;i++)
+	 dp[0][i]=0;
+	for(i=1;i<=m;i++)
+	{
+	    for(j=1;j<=n;j++)
+	    {
+	        if(a[i-1]==b[j-1])
+	         dp[i][j]=dp[i-1][j-1]+1;
+	        else
+	         dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+	    }
+	}
+	cout<<dp[m][n];
 	return 0;
 }
