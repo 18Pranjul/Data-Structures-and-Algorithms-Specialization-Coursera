@@ -1,39 +1,86 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-typedef long long int ll;
+#define ll long long
+#define MOD 1000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define mp make_pair
+#define f first
+#define s second
+#define TEST ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+ll hsh(ll n)
+{
+	ll a=100007,b=111111;
+	ll h=(a*n+b)%MOD;
+	return h;
+}
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,i,number;
-    cin>>n;
-    string s1,name;
-    vector<string> a;
-    for(i=0;i<10000000;i++)
-    {
-        a.push_back("not found");
-    }
-    for(i=0;i<n;i++)
-    {
-        cin>>s1;
-        if(s1[0]=='a' && s1[1]=='d' && s1[2]=='d')
-        {
-            cin>>number;
-            cin>>name;
-            a[number]=name;
-        }
-        else
-        if(s1[0]=='d' && s1[1]=='e' && s1[2]=='l')
-        {
-            cin>>number;
-            a[number]="not found";
-        }
-        else
-        if(s1[0]=='f' && s1[1]=='i' && s1[2]=='n' && s1[3]=='d')
-        {
-            cin>>number;
-            cout<<a[number]<<endl;
-        }
-    }
+	fast_io;
+	ll n,i,h,num;
+	string op,name;
+	map <ll,vector<pair<ll,string>>> dir;
+	cin>>n;
+	while(n--)
+	{
+		cin>>op>>num;
+		h=hsh(num);
+		if(op=="add")
+		{
+			cin>>name;
+			ll f=0;
+			for(i=0;i<dir[h].size();i++)
+			{
+				if(dir[h][i].f==num)
+				{
+					dir[h][i].s=name;
+					f=1;
+					break;
+				}
+			}
+			if(!f) dir[h].pb(mp(num,name));
+		}
+		else if(op=="del")
+		{
+			for(i=0;i<dir[h].size();i++)
+			{
+				if(dir[h][i].f==num)
+				{
+					dir[h].erase(dir[h].begin()+i);
+					break;
+				}
+			}
+		}
+		else
+		{
+			ll f=0;
+			for(i=0;i<dir[h].size();i++)
+			{
+				if(dir[h][i].f==num)
+				{
+					cout<<dir[h][i].s<<ln;
+					f=1;
+					break;
+				}
+			}
+			if(!f) cout<<"not found\n";
+		}
+	}
+	return 0;
 }
