@@ -1,50 +1,60 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-typedef long long int ll;
-#define INF LLONG_MAX
-int main()
+#define ll long long
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define mp make_pair
+#define f first
+#define s second
+#define Test ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+ll root(ll a[],ll x)
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,m,i,j,x,a,b,u,v;
-    cin>>n>>m;
-    vector<ll> adj[n+1];
-    for(i=0;i<m;i++)
+    while(a[x]!=x)
     {
-        cin>>a>>b;
-        adj[a].push_back(b);
-        adj[b].push_back(a);
+        a[x]=a[a[x]];
+        x=a[x];
     }
-    ll visited[n+1];
-    for(i=0;i<=n;i++)
-    {
-        visited[i]=0;
-    }
-    ll c=0;
-    for(j=1;j<=n;j++)
-    {
-        if(!visited[j])
-        {
-            visited[j]=1;
-            queue<ll> q;
-            q.push(j);
-            while(!q.empty())
-            {
-                x=q.front();
-                for(i=0;i<adj[x].size();i++)
-                {
-                    if(!visited[adj[x][i]])
-                    {
-                        visited[adj[x][i]]=1;
-                        q.push(adj[x][i]);
-                    }
-                }
-                q.pop();
-            }
-            c++;
-        }
-    }
-    cout<<c<<endl;
-    return 0;
+    return x;
+}
+void Union(ll a[],ll x,ll y)
+{
+    ll rx=root(a,x),ry=root(a,y);
+    if(rx<ry) a[ry]=rx;
+    else a[rx]=ry;
+}
+int main() 
+{
+	fast_io;
+	ll n,m;
+	cin>>n>>m;
+	ll a[n+5],i;
+	for(i=1;i<=n;i++) a[i]=i;
+	for(i=0;i<m;i++)
+	{
+	    ll x,y;
+	    cin>>x>>y;
+	    Union(a,x,y);
+	}
+	ll b[1005]={0},c=0;
+	for(i=1;i<=n;i++)
+	 if(!b[root(a,i)]) b[root(a,i)]=1,c++;
+	cout<<c;
+	return 0;
 }
