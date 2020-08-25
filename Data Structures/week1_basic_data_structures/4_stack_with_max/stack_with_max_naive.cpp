@@ -1,52 +1,41 @@
-#include<bits/stdc++.h>
-#include<stack>
+#include <iostream>
+#include <stack>
+#include <string>
 using namespace std;
 typedef long long int ll;
-int main()
+#define MOD 1000000007;
+int main() 
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll t,n;
-    stack <ll> s1;
-    stack <ll> s2;
-    cin>>t;
-    while(t--)
-    {
-        char s[10];
-        cin>>s;
-        if(s[0]=='p' && s[1]=='u' && s[2]=='s' && s[3]=='h')
-        {
-            cin>>n;
-            s1.push(n);
-            if(s2.empty())
-            {
-                s2.push(n);
-            }
-            else
-            if(n>=s2.top())
-            {
-                s2.push(n);
-            }
-        }
-        else
-        if(s[0]=='p' && s[1]=='o' && s[2]=='p')
-        {
-            if(s1.top()==s2.top())
-            {
-                s1.pop();
-                s2.pop();
-            }
-            else
-            {
-                s1.pop();
-            }
-        }
-        else
-        if(s[0]=='m' && s[1]=='a' && s[2]=='x')
-        {
-            cout<<s2.top()<<endl;
-        }
-    }
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll n,a;
+	string s;
+	stack <ll> st;
+	stack <ll> st_max;
+	cin>>n;
+	while(n--)
+	{
+	    cin>>s;
+	    if(s.at(0)=='p' && s.at(1)=='u')
+	    {
+	        cin>>a;
+	        st.push(a);
+	        if(st_max.empty())
+	         st_max.push(a);
+	        else if(st_max.top()<a)
+	         st_max.push(a);
+	        else
+	         st_max.push(st_max.top());
+	    }
+	    else if(s.at(0)=='m')
+	    {
+	        cout<<st_max.top()<<"\n";
+	    }
+	    else
+	    {
+	         st.pop();
+	         st_max.pop();
+	    }
+	}
+	return 0;
 }
