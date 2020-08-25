@@ -1,55 +1,59 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-#define INF LLONG_MAX
-typedef long long int ll;
-vector<ll> Dijkstra(ll s,vector<vector<pair<ll,ll>>> adj)
+#define ll long long
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define vll vector<ll>
+#define sll stack<ll>
+#define qll queue<ll>
+#define mp make_pair
+#define f first
+#define s second
+#define Test ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+int main() 
 {
-    ll n=adj.size();
-    vector<ll> dist(n+5,INF);
-    vector<ll> prev(n+5,0);
-    priority_queue<pair<ll,ll>, vector<pair<ll,ll>>, greater<pair<ll,ll>>> pq;
-    pq.push({0,s});
-    dist[s]=0;
-    while(!pq.empty())
-    {
-        ll v=pq.top().second;
-        ll dist_v=pq.top().first;
-        pq.pop();
-        if(dist_v!=dist[v])
-        continue;
-        for(ll i=0;i<adj[v].size();i++)
-        {
-            ll to=adj[v][i].first;
-            ll len=adj[v][i].second;
-            if(dist[v]+len<dist[to])
-            {
-                dist[to]=dist[v]+len;
-                prev[to]=v;
-                pq.push({dist[to],to});
-            }
-        }
-    }
-    return dist;
-}
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,m,i,j,b,w,u,v,a;
-    cin>>n>>m;;
-    vector<vector<pair<ll,ll>>> adj(n+5);
-    for(i=0;i<m;i++)
-    {
-        cin>>a>>b>>w;
-        adj[a].push_back({b,w});
-    }
-    cin>>u>>v;
-    vector<ll> dist(n+1);
-    dist=Dijkstra(u,adj);
-    if(dist[v]==INF)
-    cout<<-1<<endl;
-    else
-    cout<<dist[v]<<endl;
-    return 0;
+	fast_io;
+	ll n,m,i,a,b,w;
+	cin>>n>>m;
+	vector <pll> v[n+5];
+	for(i=0;i<m;i++)
+	{
+	    cin>>a>>b>>w;
+	    v[a].pb({b,w});
+	}
+	cin>>a>>b;
+	priority_queue <pll,vector <pll>,greater<pll>> q;
+	q.push({0,a});
+	ll vis[n+5]={0};
+	while(q.size() && q.top().s!=b)
+	{
+	    pll z=q.top();
+	    q.pop();
+	    vis[z.s]=1;
+	    for(i=0;i<v[z.s].size();i++)
+	    {
+	        pll y=v[z.s][i];
+	        if(!vis[y.f]) q.push({y.s+z.f,y.f});
+	    }
+	}
+	if(q.size()) cout<<q.top().f;
+	else cout<<"-1";
+	return 0;
 }
