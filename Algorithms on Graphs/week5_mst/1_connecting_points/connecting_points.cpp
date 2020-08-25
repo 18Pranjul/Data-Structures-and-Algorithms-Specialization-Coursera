@@ -1,67 +1,100 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-typedef long long int ll;
-typedef long double ld;
-void make_set(ll n,ll parent[])
+#define ll long long
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define vll vector<ll>
+#define sll stack<ll>
+#define qll queue<ll>
+#define mp make_pair
+#define f first
+#define s second
+#define Test ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+struct edge
 {
-    for(ll i=0;i<=n;i++)
+    ll u,v;
+    double d;
+};
+struct SET
+{
+    ll p;
+    ll r;
+};
+double dist(pll p1,pll p2)
+{
+    double d=sqrt(pow(p1.f-p2.f,2)+pow(p1.s-p2.s,2))*1.0;
+    return d;
+}
+bool cmp(edge e1,edge e2)
+{
+    return e1.d<e2.d;
+}
+ll root(SET s[],ll a)
+{
+    if(s[a].p!=a)
+     s[a].p=root(s,s[a].p);
+    return s[a].p;
+}
+void Union(SET s[],ll a,ll b)
+{
+    if(s[a].r<s[b].r) s[a].p=b;
+    else if(s[a].r>s[b].r) s[b].p=a;
+    else s[a].p=b,s[b].r++;
+}
+void kruskal(edge e[],ll k,ll n,vll &v)
+{
+    ll i;
+    SET s[n+5];
+    for(i=0;i<n;i++) s[i].p=i,s[i].r=0;
+    for(i=0;i<k;i++)
     {
-        parent[i]=i;
-    }
-}
-ll find(ll x,ll parent[])
-{
-    if(x==parent[x])return x;
-    return find(parent[x],parent);
-}
-void unioni(ll x,ll y,ll parent[])
-{
-    ll first=find(x,parent);
-    ll second=find(y,parent);
-    parent[first]=parent[second];
-}
-long double kruskal(vector<pair<ld,pair<ll,ll>>> adj,ll parent[])
-{
-    ll x,y,i;
-    long double cost=0;
-    long double minimum_cost=0;
-    for(i=0;i<adj.size();i++)
-    {
-        x=adj[i].second.first;
-        y=adj[i].second.second;
-        cost=1.0*adj[i].first;
-        if(find(x,parent)!=find(y,parent))
+        ll x=root(s,e[i].u);
+        ll y=root(s,e[i].v);
+        if(x!=y)
         {
-            minimum_cost+=cost;
-            unioni(x,y,parent);
+            v.pb(i);
+            Union(s,x,y);
         }
     }
-    return minimum_cost;
 }
-int main()
+int main() 
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,m,a[20000],b[20000],i,j;
-    ld w;
-    cin>>n;
-    ll parent[n+1];
-    make_set(n,parent);
-    vector<pair<ld,pair<ll,ll>>> adj;
-    for(i=0;i<n;i++)
-    {
-        cin>>a[i]>>b[i];
-    }
-    for(i=0;i<n;i++)
-    {
-        for(j=i+1;j<n;j++)
-        {
-            w=1.0*sqrt(((a[i]-a[j])*(a[i]-a[j]))+((b[i]-b[j])*(b[i]-b[j])));
-            adj.push_back({w,{i,j}});
-            //cout<<adj[i].first<<" "<<adj[i].second.first<<" "<<adj[i].second.second<<endl;
-        }
-    }
-    sort(adj.begin(),adj.end());
-    cout<<fixed<<setprecision(9)<<kruskal(adj,parent)<<endl;
+	fast_io;
+	ll n,i,j,k;
+	cin>>n;
+	pll p[n+5];
+	for(i=0;i<n;i++) cin>>p[i].f>>p[i].s;
+	edge e[n*n+5];
+	k=0;
+	for(i=0;i<n;i++)
+	 for(j=i+1;j<n;j++)
+	 {
+	     e[k].u=i;
+	     e[k].v=j;
+	     e[k++].d=dist(p[i],p[j]);
+	 }
+	sort(e,e+k,cmp);
+	vll v;
+	kruskal(e,k,n,v);
+	double ans=0.0;
+	for(i=0;i<v.size();i++) ans+=e[v[i]].d;
+	cout<<fixed<<setprecision(7)<<ans;
+	return 0;
 }
