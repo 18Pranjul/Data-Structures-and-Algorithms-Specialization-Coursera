@@ -1,75 +1,101 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-typedef long long int ll;
-#define MAX 1000000
-long long int id[MAX],n,edges;
-pair<long double, pair<long long int, long long int> > p[MAX];
-void initialize()
+#define ll long long
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define vll vector<ll>
+#define sll stack<ll>
+#define qll queue<ll>
+#define mp make_pair
+#define f first
+#define s second
+#define Test ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+struct edge
 {
-    for(ll i=0;i<MAX;++i)
-    {
-        id[i]=i;
-    }
+    ll u,v;
+    double d;
+};
+struct SET
+{
+    ll p;
+    ll r;
+};
+double dist(pll p1,pll p2)
+{
+    double d=sqrt(pow(p1.f-p2.f,2)+pow(p1.s-p2.s,2))*1.0;
+    return d;
 }
-ll root(ll x)
+bool cmp(edge e1,edge e2)
 {
-    while(id[x] != x)
-    {
-        id[x] = id[id[x]];
-        x = id[x];
-    }
-    return x;
+    return e1.d<e2.d;
 }
-void union1(ll x, ll y)
+ll root(SET s[],ll a)
 {
-    int p = root(x);
-    int q = root(y);
-    id[p] = id[q];
+    if(s[a].p!=a)
+     s[a].p=root(s,s[a].p);
+    return s[a].p;
 }
-vector<long double> kruskal(pair<long double, pair<ll, ll> > p[])
+void Union(SET s[],ll a,ll b)
 {
-    ll x, y;
-    vector<long double> vect;
-    long double cost;
-    for(ll i=0;i<edges;i++)
+    if(s[a].r<s[b].r) s[a].p=b;
+    else if(s[a].r>s[b].r) s[b].p=a;
+    else s[a].p=b,s[b].r++;
+}
+void kruskal(edge e[],ll k,ll n,vll &v)
+{
+    ll i;
+    SET s[n+5];
+    for(i=0;i<n;i++) s[i].p=i,s[i].r=0;
+    for(i=0;i<k;i++)
     {
-        x=p[i].second.first;
-        y=p[i].second.second;
-        cost=p[i].first;
-        if(root(x)!=root(y))
+        ll x=root(s,e[i].u);
+        ll y=root(s,e[i].v);
+        if(x!=y)
         {
-            vect.push_back(cost);
-            union1(x,y);
-        }    
-    }
-    return vect;
-}
-int main()
-{
-    ll n,kk,i,j,k;
-    ll weight, cost, minimumCost;
-    long double dist;
-    initialize();
-    cin>>n;
-    ll a[n],b[n];
-    edges=(n*(n-1))/2;
-    for(i=1;i<=n;i++)
-    {
-        cin>>a[i]>>b[i];
-    }
-    cin>>kk;
-    k=0;
-    for(i=1;i<=n;i++)
-    {
-        for(j=i+1;j<=n;j++)
-        {
-            dist=sqrt(((a[i]-a[j])*(a[i]-a[j]))+((b[i]-b[j])*(b[i]-b[j])));
-            p[k]=make_pair(dist,make_pair(i,j));
-            k++;
+            v.pb(i);
+            Union(s,x,y);
         }
     }
-    sort(p,p+edges);
-    vector<long double> vect=kruskal(p);
-    cout<<fixed<<setprecision(12)<<vect[n-kk];
-    return 0;
+}
+int main() 
+{
+	fast_io;
+	ll n,i,j,k,m;
+	cin>>n;
+	pll p[n+5];
+	for(i=0;i<n;i++) cin>>p[i].f>>p[i].s;
+	cin>>m;
+	edge e[n*n+5];
+	k=0;
+	for(i=0;i<n;i++)
+	 for(j=i+1;j<n;j++)
+	 {
+	     e[k].u=i;
+	     e[k].v=j;
+	     e[k++].d=dist(p[i],p[j]);
+	 }
+	sort(e,e+k,cmp);
+	vll v;
+	kruskal(e,k,n,v);
+	double ans=0.0;
+	//for(i=0;i<m;i++) ans+=e[v[i]].d;
+	cout<<fixed<<setprecision(7)<<e[v[n-m]].d;
+	return 0;
 }
