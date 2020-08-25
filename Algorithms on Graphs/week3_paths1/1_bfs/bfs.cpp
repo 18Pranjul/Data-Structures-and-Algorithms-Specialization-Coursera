@@ -1,50 +1,66 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-typedef long long int ll;
-#define INF 100000000
-int main()
+#define ll long long
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define vll vector<ll>
+#define sll stack<ll>
+#define qll queue<ll>
+#define mp make_pair
+#define f first
+#define s second
+#define Test ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+int main() 
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll n,m,i,x,a,b,u,v;
-    cin>>n>>m;
-    vector<ll> adj[n+1];
-    for(i=0;i<m;i++)
-    {
-        cin>>a>>b;
-        adj[a].push_back(b);
-        adj[b].push_back(a);
-    }
-    ll visited[n+1];
-    ll level[n+1];
-    for(i=0;i<=n;i++)
-    {
-        visited[i]=0;
-        level[i]=-1;
-    }
-    cin>>u>>v;
-    queue<ll> q;
-    q.push(u);
-    level[u]=0;
-    visited[u]=1;
-    while(!q.empty())
-    {
-        x=q.front();
-        for(i=0;i<adj[x].size();i++)
-        {
-            if(!visited[adj[x][i]])
-            {
-                visited[adj[x][i]]=1;
-                q.push(adj[x][i]);
-                level[adj[x][i]]=level[x]+1;
-            }
-        }
-        q.pop();
-    }
-    if(level[v]==-1)
-    cout<<-1<<endl;
-    else
-    cout<<level[v]<<endl;
-    return 0;
+	fast_io;
+	ll n,m,i,u,v;
+	cin>>n>>m;
+	vll ad[n+5];
+	ll vis[n+5]={0},lvl[n+5];
+	for(i=1;i<=n;i++) lvl[i]=-1;
+	for(i=0;i<m;i++)
+	{
+	    cin>>u>>v;
+	    ad[u].pb(v);
+	    ad[v].pb(u);
+	}
+	cin>>u>>v;
+	qll q;
+	q.push(u);
+	vis[u]=1;
+	lvl[u]=0;
+	while(q.size())
+	{
+	    ll z=q.front();
+	    q.pop();
+	    for(i=0;i<ad[z].size();i++)
+	    {
+	        ll y=ad[z][i];
+	        if(!vis[y])
+	        {
+	            q.push(y);
+	            vis[y]=1;
+	            lvl[y]=lvl[z]+1;
+	        }
+	    }
+	}
+	cout<<lvl[v];
+	return 0;
 }
