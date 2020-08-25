@@ -20,64 +20,53 @@ using namespace std;
 #define pb push_back
 #define pll pair<ll,ll>
 #define mp make_pair
-#define F first
-#define S second
+#define f first
+#define s second
 #define Test ll t;cin>>t; while(t--)
 #define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
-vector<bool> visited;
-stack<ll> st;
-void dfs1(vector<ll> adj[],ll v)
+void fill(vector <ll> v[],ll vis[],stack <ll> &st,ll k)
 {
-    visited[v]=true;
-    for(int u:adj[v])
+    vis[k]=1;
+    for(ll i=0;i<v[k].size();i++)
     {
-        if(!visited[u])
-        dfs1(adj,u);
+        ll y=v[k][i];
+        if(!vis[y]) fill(v,vis,st,y);
     }
-    st.push(v);
+    st.push(k);
 }
-void dfs2(vector<ll> adj[],ll v)
+void dfs(vector <ll> v[],ll vis[],ll k)
 {
-    visited[v]=true;
-    for(int u:adj[v])
+    vis[k]=1;
+    for(ll i=0;i<v[k].size();i++)
     {
-        if(!visited[u])
-        dfs2(adj,u);
+        ll y=v[k][i];
+        if(!vis[y]) dfs(v,vis,y);
     }
 }
-int main()
+int main() 
 {
-    fast_io;
-    ll n,m,i,x,c,a,b;
-    cin>>n>>m;
-    vector<ll> adj1[n+1];
-    vector<ll> adj2[n+1];
-    for(i=0;i<m;i++)
-    {
-        cin>>a>>b;
-        adj1[a].pb(b);
-        adj2[b].pb(a);
-    }
-    visited.assign(n+1,false);
-    for(i=1;i<=n;i++)
-    {
-        if(!visited[i])
-        {
-            dfs1(adj1,i);
-        }
-    }
-    visited.assign(n+1,false);
-    c=0;
-    while(!st.empty())
-    {
-        x=st.top();
-        if(!visited[x])
-        {
-            dfs2(adj2,x);
-            c++;
-        }
-        st.pop();
-    }
-    cout<<c<<endl;
-    return 0;
+	fast_io;
+	ll n,m,i;
+	cin>>n>>m;
+	vector <ll> v[n+5],vr[n+5];
+	for(i=0;i<m;i++)
+	{
+	    ll a,b;
+	    cin>>a>>b;
+	    v[a].pb(b);
+	    vr[b].pb(a);
+	}
+	ll vis[n+5]={0};
+	stack <ll> st;
+	for(i=1;i<=n;i++)
+	 if(!vis[i]) fill(v,vis,st,i);
+	ll visr[n+5]={0},c=0;
+	while(st.size())
+	{
+	    ll k=st.top();
+	    st.pop();
+	    if(!visr[k]) dfs(vr,visr,k),c++;
+	}
+	cout<<c;
+	return 0;
 }
