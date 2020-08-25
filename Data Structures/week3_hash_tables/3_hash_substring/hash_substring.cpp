@@ -1,86 +1,66 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-typedef long long int ll;
-ll polyhash(string S,ll p,ll x)
+#define ll long long
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define mp make_pair
+#define f first
+#define s second
+#define TEST ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+ll hsh(string s)
 {
-    ll hash=0;
-    for(ll i=S.length()-1;i>=0;i--)
-    {
-        hash=(((hash*x))+(S[i]))%p;
-    }
-    return hash;
+	ll x=1,i,h=0;
+	for(i=0;i<s.size();i++)
+	{
+	    h=((h+s[i]*x)%MOD);
+	    x=(x*263)%MOD;
+	}
+	return h;
 }
-vector <ll> precomputehashes(string T,ll pl,ll p,ll x)
+int main() 
 {
-    vector<ll> H;
-    for(ll i=0;i<(T.length()-pl+1);i++)
-    {
-        H.push_back(0);
-    }
-    string S;
-    S=T.substr(T.length()-pl,pl);
-    H[T.length()-pl]=polyhash(S,p,x);
-    ll y=1;
-    for(ll i=1;i<=pl;i++)
-    {
-        y=((y)*(x))%p;
-    }
-    for(ll i=T.length()-pl-1;i>=0;i--)
-    {
-        ll prehash=(((((x)*(H[i+1])))+((T[i])))-(((y)*(T[i+pl]))));
-        while(prehash<0)
-        {
-            prehash+=p;
-        }
-        H[i]=prehash%p;
-    }
-    return H;
-}
-bool areequal(string s1,string s2)
-{
-    if(s1.length()!=s2.length())
-    {
-        return false;
-    }
-    for(ll i=0;i<s1.length();i++)
-    {
-        if(s1[i]!=s2[i])
-        return false;
-    }
-    return true;
-}
-vector<ll> RabinKarp(string T,string P)
-{
-    ll p=1000000007;
-    ll x=rand()%(p-1)+1;
-    vector<ll> result;
-    ll phash=polyhash(P,p,x);
-    vector<ll> H;
-    H=precomputehashes(T,P.length(),p,x);
-    for(ll i=0;i<=(T.length()-P.length());i++)
-    {
-        if(phash!=H[i])
-        continue;
-        if(areequal(T.substr(i,P.length()),P))
-        {
-            result.push_back(i);
-        }
-    }
-    return result;
-}
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    string P,T;
-    cin>>P>>T;
-    vector<ll> result;
-    result=RabinKarp(T,P);
-    for(ll i=0;i<result.size();i++)
-    {
-        cout<<result[i]<<" ";
-    }
-    cout<<endl;
-    return 0;
+	fast_io;
+	string p,t;
+	cin>>p>>t;
+	ll i,h[t.size()+5],d=t.size()-p.size();
+	h[d+1]=hsh(p);
+	h[d]=hsh(t.substr(d));
+	ll z=1;
+	for(i=1;i<=p.size();i++) z=(z*263)%MOD;
+	for(i=d-1;i>=0;i--)  h[i]=(h[i+1]*263-(z*t[i+p.size()])%MOD+t[i]+MOD)%MOD;
+	ll f;
+	for(i=0;i<=d;i++)
+	{
+	    if(h[i]==h[d+1])
+	    {
+	        f=1;
+	        for(ll j=0;j<p.size();j++)
+	        {
+	            if(p[j]!=t[i+j])
+	            {
+	                f=0;
+	                break;
+	            }
+	        }
+	        if(f) cout<<i<<" ";
+	    }
+	}
+	return 0;
 }
