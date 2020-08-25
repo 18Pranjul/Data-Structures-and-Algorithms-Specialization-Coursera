@@ -1,117 +1,100 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+#include <cstring>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <utility>
+#include <iomanip>
+#include <climits>
 using namespace std;
-typedef long long int ll;
-#define x 263
-#define modp 1000000007 
-struct roop
+#define ll long long
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+#define pb push_back
+#define pll pair<ll,ll>
+#define mp make_pair
+#define f first
+#define s second
+#define TEST ll t;cin>>t; while(t--)
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
+ll hsh(string s,ll m)
 {
-    vector<string> v;
-};
-ll power(ll xx, unsigned long long int y, ll p) 
-{ 
-    ll res = 1;
-    xx = xx % p;
-    while (y > 0) 
-    { 
-        if (y & 1) 
-            res = (res*xx) % p; 
-        y = y>>1;
-        xx = (xx*xx) % p;   
-    } 
-    return res; 
+	ll x=1,i,h=0;
+	for(i=0;i<s.size();i++)
+	{
+	    h=((h+s[i]*x)%MOD);
+	    x=(x*263)%MOD;
+	}
+	return h%m;
 }
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll m,n,i,j,k,number,flag;
-    string s1,str;
-    cin>>m;
-    cin>>n;
-    struct roop r[m+1];
-    for(i=0;i<n;i++)
-    {
-        cin>>s1;
-        if(s1[0]=='a' && s1[1]=='d' && s1[2]=='d')
-        {
-            cin>>str;
-            k=0;
-            for(j=0;j<str.length();j++)
-            {
-                unsigned long long int jj=j;
-                k=((k+(((int(str[j]))*(power(x,jj,modp)))%modp))%modp);
-            }
-            k=k%m;
-            //cout<<k<<endl;
-            flag=0;
-            for (auto it = r[k].v.begin(); it != r[k].v.end(); it++)
-            { 
-                if (*it==str) 
-                { 
-                    flag=1;
-                    break; 
-                }
-            }
-            if(flag==0)
-            r[k].v.push_back(str);
-        }
-        else
-        if(s1[0]=='d' && s1[1]=='e' && s1[2]=='l')
-        {
-            cin>>str;
-            k=0;
-            for(j=0;j<str.length();j++)
-            {
-                unsigned long long int jj=j;
-                k=((k+(((int(str[j]))*(power(x,jj,modp)))%modp))%modp);
-            }
-            k=k%m;
-            //cout<<k<<endl;
-            for (auto it = r[k].v.begin(); it != r[k].v.end(); it++)
-            { 
-                if (*it==str) 
-                { 
-                    r[k].v.erase(it);
-                    break; 
-                }
-            }
-        } 
-        else
-        if(s1[0]=='f' && s1[1]=='i' && s1[2]=='n' && s1[3]=='d')
-        {
-            cin>>str;
-            k=0;
-            for(j=0;j<str.length();j++)
-            {
-                unsigned long long int jj=j;
-                k=((k+(((int(str[j]))*(power(x,jj,modp)))%modp))%modp);
-            }
-            k=k%m;
-            //cout<<k<<endl;
-            flag=0;
-            for (auto it = r[k].v.begin(); it != r[k].v.end(); it++) 
-            { 
-                if (*it==str) 
-                { 
-                    cout<<"yes"<<endl;
-                    flag=1;
-                    break;
-                }
-            }
-            if(flag==0)
-            cout<<"no"<<endl;
-        }
-        else
-        if(s1[0]=='c' && s1[1]=='h' && s1[2]=='e' && s1[3]=='c' && s1[4]=='k')
-        {
-            cin>>number;
-            for(j=(r[number].v.size())-1;j>=0;j--)
-            {
-                cout<<r[number].v[j]<<" ";
-            }
-            cout<<endl;
-        }
-    }
-    return 0;
+	fast_io;
+	ll m,n,i,h,num;
+	string op,name;
+	map <ll,vector<string>> dir;
+	cin>>m>>n;
+	while(n--)
+	{
+		cin>>op;
+		if(op=="check")
+		{
+		    cin>>num;
+		    for(i=dir[num].size()-1;i>=0;i--)
+		     cout<<dir[num][i]<<" ";
+		    cout<<ln;
+		}
+		else
+		{
+		    cin>>name;
+		    h=hsh(name,m);
+		    if(op=="add")
+		    {
+			    ll f=0;
+			    for(i=0;i<dir[h].size();i++)
+			    {
+				    if(dir[h][i]==name)
+			    	{
+					    f=1;
+					    break;
+				    }
+			    }
+			    if(!f) dir[h].pb(name);
+		    }
+		    else if(op=="del")
+		    {
+			    for(i=0;i<dir[h].size();i++)
+			    {
+				    if(dir[h][i]==name)
+				    {
+					    dir[h].erase(dir[h].begin()+i);
+					    break;
+				    }
+			    }
+		    }
+		    else
+		    {
+			    ll f=0;
+			    for(i=0;i<dir[h].size();i++)
+			    {
+				    if(dir[h][i]==name)
+				    {
+					    cout<<"yes";
+					    f=1;
+					    break;
+				    }
+			    }
+			    if(!f) cout<<"no";
+			    cout<<ln;
+		    }
+	    }
+	}
+	return 0;
 }
