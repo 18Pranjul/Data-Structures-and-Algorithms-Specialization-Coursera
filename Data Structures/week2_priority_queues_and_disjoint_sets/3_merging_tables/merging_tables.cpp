@@ -1,69 +1,61 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 typedef long long int ll;
-ll max_table,n,m,parent[100000],ranki[100000],b[100000],a[100000];
-void makeset()
+#define MOD 1000000007
+#define MAX 1000000000000000000
+#define ln "\n"
+ll root(ll a,ll arr[])
 {
-    for(ll i=0;i<n;i++)
-    {
-        parent[i]=i;
-        ranki[i]=0;
-    }
+    while(arr[a]!=a)
+     arr[a]=arr[arr[a]] , a=arr[a];
+    return a;
 }
-ll find(ll i)
+ll _union(ll c[],ll sz[],ll size[],ll a,ll b,ll max)
 {
-    while(i!=parent[i])
-    i=parent[i];
-    return i;
-}
-void unioni(ll x,ll y)
-{
-    ll first=find(x);
-    ll second=find(y);
-    //cout<<first<<" "<<second<<endl;
-    if(first!=second)
+    a=root(a,c);
+    b=root(b,c);
+    if(a!=b)
     {
-        if(ranki[first]<ranki[second])
+        if(size[a]>=size[b])
         {
-            parent[first]=second;
-            b[second]+=b[first];
-            b[first]=0;
+            c[b]=a;
+            size[a]+=size[b];
+            sz[a]+=sz[b];
+            if(max<sz[a]) max=sz[a];
         }
         else
         {
-            parent[second]=first;
-            b[first]+=b[second];
-            b[second]=0;
-            if(ranki[first]==ranki[second])
-            {
-                ranki[first]++;
-            }
+            c[a]=b; 
+            size[b]+=size[a];
+            sz[b]+=sz[a];
+            if(max<sz[b]) max=sz[b];
         }
-        max_table=max(max_table,max(b[first],b[second]));
     }
+    return max;
 }
-int main()
+int main() 
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    ll i,to_merge_table_a,to_merge_table_b;
-    cin>>n>>m;
-    max_table=LLONG_MIN;
-    for(i=0;i<n;i++)
-    {
-        cin>>a[i];
-        b[i]=a[i];
-        max_table=max(max_table,a[i]);
-    }
-    makeset();
-    for(i=0;i<m;i++)
-    {
-        cin>>to_merge_table_a>>to_merge_table_b;
-        --to_merge_table_a;
-        --to_merge_table_b;
-        unioni(to_merge_table_a,to_merge_table_b);
-        cout<<max_table<<endl;
-    }
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll n,m,size[100005],con[100005],sz[100005],i,max=0,q1,q2;
+	cin>>n>>m;
+	for(i=1;i<=n;i++)
+	{
+	    con[i]=i;
+	    size[i]=1;
+	}
+	for(i=1;i<=n;i++)
+	{
+	    cin>>sz[i];
+	    if(max<sz[i]) max=sz[i];
+	}
+	while(m--)
+	{
+	    cin>>q1>>q2;
+	    max=_union(con,sz,size,q1,q2,max);
+	    cout<<max<<ln;
+	}
+	return 0;
 }
