@@ -22,74 +22,33 @@ using namespace std;
 #define mp make_pair
 #define f first
 #define s second
-#define Test ll t;cin>>t;while(t--)
+#define Test ll t;cin>>t; while(t--)
 #define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);
-vector<ll> color;
-vector<ll> parent;
-ll cycle_start, cycle_end;
-bool dfs(ll v,vector<ll> adj[])
+bool dfs(vector <ll> v[],bool vis[],bool vis1[],ll k)
 {
-    color[v]=1;
-    for(auto u:adj[v])
+    vis[k]=vis1[k]=1;
+    for(ll i=0;i<v[k].size();i++)
     {
-        if(color[u]==0)
-        {
-            parent[u]=v;
-            if(dfs(u,adj))
-            return true;
-        }
-        else
-        if(color[u]==1)
-        {
-            cycle_end=v;
-            cycle_start=u;
-            return true;
-        }
+        ll y=v[k][i];
+        if((!vis[y] && dfs(v,vis,vis1,y)) || vis1[y]) return 1;
     }
-    color[v]=2;
-    return false;
+    vis1[k]=0;
+    return 0;
 }
 int main() 
 {
 	fast_io;
-	ll n,m,i,a,b;
+	ll n,m,i;
 	cin>>n>>m;
-	vector<ll> adj[n+1];
+	vector <ll> v[n+5];
 	for(i=0;i<m;i++)
 	{
+	    ll a,b;
 	    cin>>a>>b;
-	    adj[a].push_back(b);
-	    //adj[b].push_back(a);
+	    v[a].pb(b);
 	}
-	color.assign(n+1,0);
-	parent.assign(n+1,-1);
-	cycle_start=-1;
-	for(i=1;i<=n;i++)
-	{
-	    if(color[i]==0 && dfs(i,adj))
-	    {
-	        break;
-	    }
-	}
-	if(cycle_start==-1)
-	cout<<0<<endl;
-	else
-	{
-	    cout<<1<<endl;
-	    /*vector<ll> cycle;
-	    cycle.push_back(cycle_start);
-	    for(i=cycle_end;i!=cycle_start;i=parent[i])
-	    {
-	        cycle.push_back(i);
-	    }
-	    cycle.push_back(cycle_start);
-	    reverse(cycle.begin(), cycle.end());
-	    cout<<"Cycle:"<<endl;
-	    for(i=0;i<cycle.size();i++)
-	    {
-	        cout<<cycle[i]<<" ";
-	    }
-	    cout<<endl;*/
-	}
+	bool vis[n+5]={false},vis1[n+5]={false},f=0;
+	for(i=1;i<=n;i++) if(!vis[i] && !f) f=dfs(v,vis,vis1,i);
+	cout<<(f?"1":"0");
 	return 0;
-} 
+}
