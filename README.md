@@ -11,7 +11,6 @@ Kindly refer to this repository if you get stuck in any of the assignments.
 - [Programming Assignment 1](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week1_programming_challenges/week1_programming_challenges.pdf)
   
   - [Sum of Two Digits](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week1_programming_challenges/1_sum_of_two_digits/Sum.cpp)
-  
   -[Maximum Pairwise Product](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week1_programming_challenges/2_maximum_pairwise_product/max_pairwise_product.cpp)
   
 - [Programming Assignment 2](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week2_algorithmic_warmup/week2_algorithmic_warmup.pdf)
