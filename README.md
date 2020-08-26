@@ -8,6 +8,7 @@ Kindly refer to this repository if you get stuck in any of the assignments.
 
 # Course 1: [Algorithmic Toolbox](https://www.coursera.org/learn/algorithmic-toolbox?specialization=data-structures-algorithms)
 
-- Programming Assignment 1
+- [Programming Assignment 1](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week1_programming_challenges/week1_programming_challenges.pdf)
+  - A
 
 
