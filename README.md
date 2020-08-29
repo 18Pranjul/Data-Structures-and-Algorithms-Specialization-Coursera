@@ -48,6 +48,37 @@ Kindly refer to this repository if you get stuck in any of the assignments.
   
   - [Maximum Salary](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week3_greedy_algorithms/7_maximum_salary/largest_number.cpp)
   
+- [Programming Assignment 4](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/week4_divide_and_conquer.pdf)
 
+  - [Binary Search](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/1_binary_search/binary_search.cpp)
+  
+  - [Majority Element](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/2_majority_element/majority_element.cpp)
+  
+  - [Improving Quicksort](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/3_improving_quicksort/sorting.cpp)
+  
+  - [NUmber of Inversions](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/4_number_of_inversions/inversions.cpp)
+  
+  - [Organizing a Lottery](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/5_organizing_a_lottery/points_and_segments.cpp)
+  
+  - [Closest Points](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/6_closest_points/closest.cpp)
+  
+- [Programming Assignment 5](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week5_dynamic_programming1/week5_dynamic_programming1.pdf)
 
+  - [Money Change Again](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week5_dynamic_programming1/1_money_change_again/change_dp.cpp)
+  
+  - [Primitive Calculator](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week5_dynamic_programming1/2_primitive_calculator/primitive_calculator.cpp)
+  
+  - [Edit Distance](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week5_dynamic_programming1/3_edit_distance/edit_distance.cpp)
+  
+  - [Longest Common Subsequence of 2 Sequences](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week5_dynamic_programming1/4_longest_common_subsequence_of_two_sequences/lcs2.cpp)
+  
+  - [Longest Common Subsequence of 3 Sequences](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week5_dynamic_programming1/5_longest_common_subsequence_of_three_sequences/lcs3.cpp)
+  
+- [Programming Assignment 6](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week6_dynamic_programming2/week6_dynamic_programming2.pdf)
 
+  - [Maximum Amount of Gold](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week6_dynamic_programming2/1_maximum_amount_of_gold/knapsack.cpp)
+  
+  - [Partitioning Souvenirs](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week6_dynamic_programming2/2_partitioning_souvenirs/partition3.cpp)
+  
+  - [Maximum Value of an Arithmetic Expression](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week6_dynamic_programming2/3_maximum_value_of_an_arithmetic_expression/placing_parentheses.cpp)
+  
