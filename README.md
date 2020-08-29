@@ -56,7 +56,7 @@ Kindly refer to this repository if you get stuck in any of the assignments.
   
   - [Improving Quicksort](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/3_improving_quicksort/sorting.cpp)
   
-  - [NUmber of Inversions](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/4_number_of_inversions/inversions.cpp)
+  - [Number of Inversions](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/4_number_of_inversions/inversions.cpp)
   
   - [Organizing a Lottery](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week4_divide_and_conquer/5_organizing_a_lottery/points_and_segments.cpp)
   
@@ -82,3 +82,40 @@ Kindly refer to this repository if you get stuck in any of the assignments.
   
   - [Maximum Value of an Arithmetic Expression](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithmic%20Tool%20Box/week6_dynamic_programming2/3_maximum_value_of_an_arithmetic_expression/placing_parentheses.cpp)
   
+# Course 2: Data Structures
+
+- [Programming Assignment 1](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week1_basic_data_structures/week1_basic_data_structures.pdf)
+
+  - [Brackets in Code](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week1_basic_data_structures/1_brackets_in_code/brackets.cpp)
+  
+  - [Tree Height](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week1_basic_data_structures/2_tree_height/tree_height.cpp)
+  
+  - [Network Simulation](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week1_basic_data_structures/3_network_simulation/network_manager.cpp)
+  
+  - [Stack with Max](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week1_basic_data_structures/4_stack_with_max/stack_with_max_naive.cpp)
+  
+  - [Maximum Sliding Window](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week1_basic_data_structures/5_max_sliding_window/max_sliding_window.cpp)
+  
+- [Programming Assignment 2](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week2_priority_queues_and_disjoint_sets/week2_priority_queues_and_disjoint_sets.pdf)
+
+  - [Make Heap](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week2_priority_queues_and_disjoint_sets/1_make_heap/build_heap.cpp)
+  
+  - [Parallel Processing ](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week2_priority_queues_and_disjoint_sets/2_parallel_processing/parallel_processing.cpp)
+  
+  - [Merging Tables](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week2_priority_queues_and_disjoint_sets/3_merging_tables/merging_tables.cpp)
+  
+- [Programming Assignment 3](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week3_hash_tables/week3_hash_tables.pdf)
+
+  - [Phone Book](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week3_hash_tables/1_phone_book/phone_book.cpp)
+  
+  - [Hash Chains](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week3_hash_tables/2_hash_chains/hash_chains.cpp)
+  
+  - [Hash Substring](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week3_hash_tables/3_hash_substring/hash_substring.cpp)
+  
+- [Programming Assignment 3](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/week4_binary_search_trees.pdf)
+
+  - [Tree Traversals](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/1_tree_traversals/tree_orders.cpp)
+  
+  - [Is BST?](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/2_is_bst/is_bst.cpp)
+  
+  - [Is BST?(Advanced)](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/3_is_bst_advanced/is_bst_hard.cpp)
