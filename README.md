@@ -112,10 +112,76 @@ Kindly refer to this repository if you get stuck in any of the assignments.
   
   - [Hash Substring](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week3_hash_tables/3_hash_substring/hash_substring.cpp)
   
-- [Programming Assignment 3](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/week4_binary_search_trees.pdf)
+- [Programming Assignment 4](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/week4_binary_search_trees.pdf)
 
   - [Tree Traversals](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/1_tree_traversals/tree_orders.cpp)
   
   - [Is BST?](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/2_is_bst/is_bst.cpp)
   
   - [Is BST?(Advanced)](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Data%20Structures/week4_binary_search_trees/3_is_bst_advanced/is_bst_hard.cpp)
+
+# Course 3: Algorithms on Graphs
+
+- [Programming Assignment 1](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week1_decomposition1/decomposition1.pdf)
+
+  - [Reachability](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week1_decomposition1/1_reachability/reachability.cpp)
+  
+  - [Connected Components](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week1_decomposition1/2_connected_components/connected_components.cpp)
+  
+- [Programming Assignment 2](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week2_decomposition2/decomposition2.pdf)
+
+  - [Acyclicity](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week2_decomposition2/1_acyclicity/acyclicity.cpp)
+  
+  - [Toposort](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week2_decomposition2/2_toposort/toposort.cpp)
+  
+  - [Strongly Connected](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week2_decomposition2/3_strongly_connected/strongly_connected.cpp)
+  
+- [Programming Assignment 3](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week3_paths1/paths1.pdf)
+
+  - [BFS](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week3_paths1/1_bfs/bfs.cpp)
+  
+  - [Bipartite](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week3_paths1/2_bipartite/bipartite.cpp)
+  
+- [Programming Assignment 4](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week4_paths2/paths2.pdf)
+
+  - [Dijkstra](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week4_paths2/1_dijkstra/dijkstra.cpp)
+  
+  - [Negative Cycle](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week4_paths2/2_negative_cycle/negative_cycle.cpp)
+  
+- [Programming Assignment 5](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week5_mst/mst.pdf)
+
+  - [Connecting Points](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week5_mst/1_connecting_points/connecting_points.cpp)
+  
+  - [Clustering](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithms%20on%20Graphs/week5_mst/2_clustering/clustering.cpp)
+  
+# Course 4: Algorithms on Strings
+
+- [Programming Assignment 1](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%201/_f8a4443f144319c6da63eeb31af4199b_Programming-Assignment-1.pdf)
+
+  - [Trie](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%201/1_trie/trie.cpp)
+  
+  - [Trie Matching](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%201/2_trie_matching/trie_matching.cpp)
+  
+  - [Trie Matching(Extended)](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%201/3_trie_matching_extended/trie_matching_extended.cpp)
+  
+  - [Suffix Tree](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%201/4_suffix_tree/suffix_tree.cpp)
+  
+-[Programming Assigment 2](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/Programming-Assignment-2.pdf)
+
+  - [BWT](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/1_bwt/bwt.cpp)
+  
+  - [BWT Inverse](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/2_bwtinverse/bwtinverse.cpp)
+  
+  - [BWMatching](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/3_bwmatching/bwmatching.cpp)
+  
+  - [Suffix Array](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/4_suffix_array/suffix_array.cpp)
+  
+- [Programming Assignment 3](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%203/Programming-Assignment-3.pdf)
+
+  - [KMP](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%203/1_kmp/kmp.cpp)
+  
+  - [Suffix Array Long](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%203/2_suffix_array_long/suffix_array_long.cpp)
+  
+  - [Suffix Array Matching](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%203/3_suffix_array_matching/suffix_array_matching.cpp)
+  
+  - [Suffix Tree from Array](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%203/4_suffix_tree_from_array/suffix_tree_from_array.cpp)
