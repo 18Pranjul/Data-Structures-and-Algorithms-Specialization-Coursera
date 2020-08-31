@@ -166,7 +166,7 @@ Kindly refer to this repository if you get stuck in any of the assignments.
   
   - [Suffix Tree](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%201/4_suffix_tree/suffix_tree.cpp)
   
--[Programming Assigment 2](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/Programming-Assignment-2.pdf)
+- [Programming Assigment 2](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/Programming-Assignment-2.pdf)
 
   - [BWT](https://github.com/18Pranjul/Data-Structures-and-Algorithms-Specialization-Coursera/blob/master/Algorithm%20on%20Strings/Week%202/1_bwt/bwt.cpp)
   
